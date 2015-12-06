@@ -10,7 +10,7 @@ import javax.persistence.*;
 public class HousingType {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @Column(name = "type")
     @Enumerated(EnumType.STRING)

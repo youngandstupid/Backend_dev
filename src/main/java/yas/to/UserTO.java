@@ -4,6 +4,7 @@ import main.java.yas.entity.Media;
 import main.java.yas.entity.Review;
 import main.java.yas.entity.User;
 import main.java.yas.entity.UserRole;
+import main.java.yas.to.TO;
 
 import java.util.Date;
 import java.util.List;
@@ -17,7 +18,7 @@ public class UserTO extends TO {
     private String firstName;
     private String lastName;
     private String email;
-    private List<Media> medias;
+    private Media medias;
     private Date birthDate;
     private List<Review> userReviews;
 
@@ -76,11 +77,11 @@ public class UserTO extends TO {
         this.email = email;
     }
 
-    public List<Media> getMedias() {
+    public Media getMedias() {
         return medias;
     }
 
-    public void setMedias(List<Media> medias) {
+    public void setMedias(Media medias) {
         this.medias = medias;
     }
 

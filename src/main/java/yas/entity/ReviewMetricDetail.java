@@ -8,6 +8,9 @@ import javax.persistence.*;
 @Entity
 @Table(name = "review_metric")
 public class ReviewMetricDetail {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
     private Integer score;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "review_id")

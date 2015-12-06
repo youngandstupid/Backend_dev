@@ -9,14 +9,14 @@ import java.util.Date;
 @Entity
 public class Media {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @Column(name = "media_location")
     private String mediaLocation;
 
     @Column(name = "media_location_url")
-    private boolean fromUrl;
+    private boolean fromUrl = false;
 
     @Column(name = "date")
     private Date uploadDate;

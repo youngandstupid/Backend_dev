@@ -12,7 +12,7 @@ import java.util.List;
 @Entity
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @Column(name = "role")
     @Enumerated(EnumType.STRING)
@@ -24,13 +24,26 @@ public class User {
     private String email;
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "profile_media_id")
-    private List<Media> medias;
+    private Media medias;
+    @Column(name = "birth_date")
     private Date birthDate;
     @OneToMany(mappedBy = "userReview")
     private List<Review> userReviews;
+    @Column(name = "user_name")
+    private String userName;
+    private String password;
 
     public User() {
 
+    }
+
+    public User(UserTO to) {
+        this.role = to.getRole();
+        this.firstName = to.getFirstName();
+        this.lastName = to.getLastName();
+        this.email = to.getEmail();
+        this.medias = to.getMedias();
+        this.birthDate = to.getBirthDate();
     }
 
     public Integer getId() {
@@ -73,11 +86,11 @@ public class User {
         this.email = email;
     }
 
-    public List<Media> getMedias() {
+    public Media getMedias() {
         return medias;
     }
 
-    public void setMedias(List<Media> medias) {
+    public void setMedias(Media medias) {
         this.medias = medias;
     }
 
@@ -95,6 +108,22 @@ public class User {
 
     public void setUserReviews(List<Review> userReviews) {
         this.userReviews = userReviews;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public UserTO buildTO() {

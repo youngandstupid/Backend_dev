@@ -11,7 +11,7 @@ import java.util.List;
 @Table(name = "housing_housing_type")
 public class HousingTypeDetail {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "housing_id")

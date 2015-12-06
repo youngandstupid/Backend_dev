@@ -5,17 +5,19 @@ package main.java.yas.entity;
  */
 public class MetricConstant {
     enum MetricType {
-        cost,
-        cleanness,
-        area,
-        transportation
+        price,
+        clean,
+        neighbohood,
+        transportation,
+        noise,
+        security,
+        service,
+        vibe,
+        convinience
     }
 
     enum MetricCategory {
         building,
-        apartment,
-        house,
-        cottage,
-        facility
+        apartment
     }
 }

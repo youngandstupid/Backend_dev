@@ -9,7 +9,7 @@ import java.util.List;
 @Entity
 public class Housing {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name;
     private String description;
@@ -38,21 +38,21 @@ public class Housing {
     private Integer agencyId;
     private int latitude;
     private int longitude;
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     @JoinTable(
             name = "housing_facility",
             joinColumns = {@JoinColumn(name = "housing_id" , referencedColumnName = "id")},
             inverseJoinColumns = {@JoinColumn(name = "facility_id" , referencedColumnName = "id")})
     private List<Facility> facilities;
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     @JoinTable(
             name = "housing_media",
             joinColumns = {@JoinColumn(name = "housing_id" , referencedColumnName = "id")},
             inverseJoinColumns = {@JoinColumn(name = "media_id" , referencedColumnName = "id")})
     private List<Media> medias;
-    @OneToMany(mappedBy = "housingDetail")
+    @OneToMany(mappedBy = "housingDetail" , cascade = CascadeType.ALL)
     private List<HousingTypeDetail> details;
-    @OneToMany(mappedBy = "hosuing")
+    @OneToMany(mappedBy = "housing", cascade = CascadeType.ALL)
     private List<Review> reviews;
 
     public Integer getId() {
@@ -223,4 +223,11 @@ public class Housing {
         this.details = details;
     }
 
+    public List<Review> getReviews() {
+        return reviews;
+    }
+
+    public void setReviews(List<Review> reviews) {
+        this.reviews = reviews;
+    }
 }
